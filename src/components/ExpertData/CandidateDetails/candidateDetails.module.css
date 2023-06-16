@@ -1,0 +1,270 @@
+.container {
+  width: 99vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+}
+
+.wrapper {
+  width: fit-content;
+  min-height: 300px;
+  background: #fff;
+  position: relative;
+  padding: 30px;
+  height: fit-content;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.first {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 140%;
+  color: #000000;
+}
+.marginTop {
+  margin-top: 22px;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.close > img {
+  width: 100%;
+  height: 100%;
+}
+
+.second {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+  gap: 350px;
+  justify-content: space-between;
+  padding: 26px 30px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin-top: 24px;
+  border-top: 2px solid #ff0000;
+}
+
+.third {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+  /* or 22px */
+
+  color: #808080;
+}
+
+.fourth {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5rem;
+  /* identical to box height, or 120% */
+  margin-top: 6px;
+
+  /* Black/High */
+
+  color: #212121;
+}
+
+.fifth {
+  display: flex;
+  margin-top: 12px;
+  height: 25px;
+  align-items: center;
+}
+
+.fifth > div:nth-child(1) {
+  width: 20px;
+  height: 20px;
+}
+
+.fifth > div:nth-child(2) {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 140%;
+  /* or 22px */
+  margin-top: 8px;
+  margin-left: 6px;
+
+  color: #808080;
+}
+
+.sixth {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sixth > button {
+  cursor: pointer;
+}
+.sixth > button:nth-child(1) {
+  padding: 12px 16px;
+
+  /* Black/High */
+
+  background: #212121;
+  border-radius: 4px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  text-align: center;
+
+  /* White/High */
+
+  color: #ffffff;
+}
+
+.sixth > button:nth-child(2) {
+  padding: 12px 16px;
+
+  /* Black/High */
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  text-align: center;
+
+  /* Black/High */
+
+  color: #212121;
+}
+
+.seventh {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  /* or 22px */
+  background: #f4f4f4;
+  /* color: #212121; */
+  color: #8b8b8b;
+  padding: 26px 30px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin-top: 18px;
+}
+
+.seventh > div {
+  margin-top: 18px;
+}
+
+.seventh > div > span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  /* or 22px */
+
+  color: #4e4e4e;
+}
+
+.eighth {
+  display: flex;
+  justify-content: space-between;
+  background: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 22px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+  /* identical to box height, or 28px */
+
+  color: #969696;
+}
+.eighth > div {
+  width: 50%;
+}
+.eighth > div > span {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+  color: #212121;
+  margin-left: 12px;
+}
+
+.ninth {
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 22px;
+  margin-top: 27px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  /* or 22px */
+  color: #969696;
+}
+.skills {
+  display: flex;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+  /* or 34px */
+
+  display: flex;
+  align-items: center;
+
+  color: #212121;
+}
+
+.skills > span {
+  border-right: 2px solid #212121;
+  /* padding: 0 12px; */
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-top: 7px;
+}
+.skills > span:nth-child(1) {
+  padding-left: 0px;
+}
+.skills > span:nth-last-child(1) {
+  border: none;
+}
+
+.questions {
+  flex-direction: row;
+  margin-top: 24px;
+}

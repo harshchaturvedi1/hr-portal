@@ -1,0 +1,11 @@
+.buttonWrapper {
+  display: flex;
+  gap: 24px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.buttonWrapper > button {
+  border: 1px solid;
+  cursor: pointer;
+  padding: 8px 16px;
+}

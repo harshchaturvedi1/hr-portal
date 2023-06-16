@@ -1,0 +1,22 @@
+.zoomFirst {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  position: relative;
+}
+.joinButton {
+  border: 1px solid red;
+
+  background-color: #2d8cff;
+  color: #ffffff;
+  text-decoration: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: inline-block;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
