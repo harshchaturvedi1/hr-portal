@@ -4,9 +4,9 @@ const PORT = 8105;
 
 export const submitRound = async (roundName, candidateId, port = PORT) => {
   let Config = {
-    headers: {
-      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-    },
+    // headers: {
+    //   Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    // },
   };
   //   https://qa.wissda.cloud:8100/api/v1/assessment/round2/status
   const endPoint = `/api/v1/assessment/${roundName}/status`;

@@ -132,6 +132,7 @@ export const CandidateDetails = ({ handleClosePopup, selectedEvent }) => {
   useEffect(() => {
     handleSetDateAndTime();
     handleCandidateId();
+    // console.log("selectedEvent===>", event);
   }, []);
 
   return (
