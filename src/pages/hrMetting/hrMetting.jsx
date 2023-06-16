@@ -6,6 +6,7 @@ import { getCandidateResume } from "../../Apis/candidateDetails";
 import { submitCandidateResult } from "../../Apis/submitResult";
 import Select from "react-select";
 import { submitHrResult } from "../../Apis/submitHrResult";
+import { submitRound } from "../../Apis/roundSubmission";
 // all constants------------------------------------------
 const items = [
   {
@@ -97,11 +98,16 @@ const HrMetting = () => {
   };
 
   const handleSubmit = async () => {
-    console.log("submitted", ratings);
-    const id = sessionStorage.getItem("candidateId");
-    const res = await submitCandidateResult(items, ratings, comments, id);
-    console.log("handleSubmit r3 final ====>", res);
-    navigate("/roundFinal");
+    try {
+      console.log("submitted", ratings);
+      const id = sessionStorage.getItem("candidateId");
+      const res = await submitCandidateResult(items, ratings, comments, id);
+      console.log("handleSubmit r3 final ====>", res);
+      const res2 = await submitRound("round3", id, 8107);
+      navigate("/roundFinal");
+    } catch (err) {
+      console.log("handleSubmit ===>", err);
+    }
   };
 
   const Ratings = () => {
