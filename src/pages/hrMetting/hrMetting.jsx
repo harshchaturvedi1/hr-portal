@@ -103,7 +103,7 @@ const HrMetting = () => {
       const id = sessionStorage.getItem("candidateId");
       const res = await submitCandidateResult(items, ratings, comments, id);
       console.log("handleSubmit r3 final ====>", res);
-      const res2 = await submitRound("round3", id, 8107);
+      const res2 = await submitRound("round3", id, 8100);
       navigate("/roundFinal");
     } catch (err) {
       console.log("handleSubmit ===>", err);
