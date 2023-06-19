@@ -1,0 +1,107 @@
+.submission-container {
+  width: 100%;
+  background: #f5f5f5;
+  min-height: 100vh;
+  .wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    .first {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .title {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 140%;
+        color: #000000;
+      }
+      .search {
+        align-items: center;
+        display: flex;
+        width: 600px;
+        justify-content: space-between;
+        border: 1px solid #e7ede1;
+        border-radius: 4px;
+        padding: 10px 18px;
+        .search-input {
+          width: 88%;
+          input {
+            border: none;
+            outline: none !important;
+            font-family: "Open Sans";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #616161;
+            width: 100%;
+            background: inherit;
+          }
+          .search-input::placeholder {
+            opacity: 0.5;
+          }
+        }
+        .icon {
+          cursor: pointer;
+        }
+      }
+    }
+    .second {
+      .eachitem {
+        display: flex;
+        width: fit-content;
+        border-bottom: 1px solid #e7ede1;
+        & > div {
+          width: 200px;
+          height: 62px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          //   border: 1px solid;
+          padding: 0 24px;
+
+          font-family: "Open Sans";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          /* identical to box height, or 143% */
+
+          /* Secondary/Deep Ocean_100 */
+
+          color: #2c4761;
+          img {
+            height: 16px;
+            width: 16px;
+          }
+        }
+        .assign {
+          font-family: "Open Sans";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 20px;
+          /* identical to box height, or 143% */
+
+          color: #ff0000;
+          cursor: pointer;
+        }
+      }
+      & > div:nth-child(1) {
+        & > div {
+          font-family: "Open Sans";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 20px;
+          color: #616161;
+          border: none;
+          background: #fff;
+        }
+      }
+    }
+  }
+}

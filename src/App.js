@@ -6,6 +6,7 @@ import Home from "./pages/Homepage/Home";
 import { ExpertHome } from "./pages/expertHome/expertHome";
 import { ExpertMetting } from "./pages/expertMetting/expertMetting";
 import { ToastContainer } from "react-toastify";
+import { Submissions } from "./pages/submissions/submissions";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             path="/expertMetting"
             element={<ExpertMetting />}
           ></Route>
+          <Route exact path="/submissions" element={<Submissions />}></Route>
         </Routes>
         <ToastContainer />
       </Router>
