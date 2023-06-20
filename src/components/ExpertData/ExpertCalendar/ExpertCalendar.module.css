@@ -36,3 +36,44 @@
   font-size: 1rem;
   line-height: 24px;
 }
+
+.allMeet {
+  display: flex;
+  gap: 30px;
+}
+.meetDetails {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 2px;
+  width: fit-content;
+  padding: 16px;
+  gap: 12px;
+  margin-top: 38px;
+  margin-bottom: 28px;
+}
+.circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #29b473;
+  opacity: 0.25;
+}
+.details > div:nth-child(1) {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #81919c;
+}
+
+.details > div:nth-child(2) {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  color: #2c4761;
+  margin-top: 4px;
+}

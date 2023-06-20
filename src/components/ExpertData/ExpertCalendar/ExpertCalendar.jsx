@@ -8,6 +8,7 @@ import { getAllEvents } from "../../../Apis/calendarEvents";
 import { allEvents } from "../../../commonFunctions/allEvents";
 import { CandidateDetails } from "../CandidateDetails/candidateDetails";
 import { toast } from "react-toastify";
+import { currentMonthEvents } from "../../../Apis/monthEventDetails";
 
 export const ExpertCalendar = () => {
   const [userName, setUserNAme] = useState("Expert ");
@@ -18,6 +19,9 @@ export const ExpertCalendar = () => {
     startDate: new Date(),
     endDate: new Date(),
   });
+  const [currentMonthDetails, setCurrentMonthDetails] = useState({});
+  const [titles, setTitles] = useState([]);
+  const [currentMonth, setCurrentMonth] = useState("January");
 
   const handleEventClick = (info) => {
     const event = info.event;
@@ -67,9 +71,60 @@ export const ExpertCalendar = () => {
     setDateRange({ ...newRange });
   };
 
+  const monthEvents = async () => {
+    try {
+      const port = 8105;
+      const res = await currentMonthEvents(port);
+      setCurrentMonthDetails({ ...res });
+    } catch (err) {
+      console.log("monthEvents ===>", err);
+    }
+  };
+
+  const handleCurrentMonth = () => {
+    // Get today's date
+    const today = new Date();
+
+    // Define an array of month names
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    // Get the month number
+    const monthNumber = today.getMonth();
+
+    // Get the month name as a string
+    const presentMonth = monthNames[monthNumber];
+    setCurrentMonth(presentMonth);
+  };
+
+  const handleTitles = () => {
+    const data = [
+      "Meetings for Today",
+      `Pending Meetings in ${currentMonth}`,
+      `Meetings Completed in ${currentMonth}`,
+      "Pending Project Assignment",
+    ];
+    setTitles(data);
+  };
+
   useEffect(() => {
     document.body.style.overflow = "scroll";
     handleGetAllEvents();
+    monthEvents();
+    handleCurrentMonth();
+    handleTitles();
   }, [dateRange]);
 
   return (
@@ -77,6 +132,22 @@ export const ExpertCalendar = () => {
       <div className={styles.heading}>Welcome! {userName} </div>
       <div className={styles.subheader}>
         Lets take a moment to check Interview Plannned
+      </div>
+      <div className={styles.allMeet}>
+        <MeetDetails
+          data={currentMonthDetails?.meetingsOnDate}
+          heading={titles[0]}
+        />
+        <MeetDetails
+          data={currentMonthDetails?.meetingsPending}
+          heading={titles[1]}
+          color="#FFDABF"
+        />
+        <MeetDetails
+          data={currentMonthDetails?.meetingsCompleted}
+          heading={titles[2]}
+          color="#FFDABF"
+        />
       </div>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -112,3 +183,15 @@ function renderEventContent(eventInfo) {
     </div>
   );
 }
+
+const MeetDetails = ({ data, heading, color }) => {
+  return (
+    <div className={styles.meetDetails}>
+      <div className={styles.circle} style={{ background: `${color}` }}></div>
+      <div className={styles.details}>
+        <div>{heading}</div>
+        <div>{data}</div>
+      </div>
+    </div>
+  );
+};
