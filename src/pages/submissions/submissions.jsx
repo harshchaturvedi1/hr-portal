@@ -1,5 +1,7 @@
 import "./submissions.scss";
 import data from "../../mockData/submissiondetails.json";
+import { useState } from "react";
+import { HrSubmission } from "../../components/hrSubmission/hrSubmission";
 export const Submissions = () => {
   return (
     <div className="submission-container">
@@ -24,28 +26,39 @@ export const Submissions = () => {
 };
 
 const CandidateData = ({ data }) => {
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  const handleClick = () => {
+    setShowPopUp(true);
+  };
+
   return (
-    <div className="second">
-      <div className="eachitem">
-        <div>Candidate Name</div>
-        <div>Date of Interview</div>
-        <div>Next Round Allotment</div>
-        <div></div>
-      </div>
-      {data?.map((ele, index) => (
-        <div className="eachitem" key={index}>
-          <div>{ele?.name}</div>
-          <div>{ele?.dateOfInterview}</div>
-          {ele?.nextRound?.alloted ? (
-            <div>{ele?.nextRound?.nextRound}</div>
-          ) : (
-            <div className="assign">Assign</div>
-          )}
-          <div>
-            <img src={"./right-arrow-full.svg"} alt="" />
-          </div>
+    <>
+      <div className="second">
+        <div className="eachitem">
+          <div>Candidate Name</div>
+          <div>Date of Interview</div>
+          <div>Next Round Allotment</div>
+          <div></div>
         </div>
-      ))}
-    </div>
+        {data?.map((ele, index) => (
+          <div className="eachitem" key={index}>
+            <div>{ele?.name}</div>
+            <div>{ele?.dateOfInterview}</div>
+            {ele?.nextRound?.alloted ? (
+              <div>{ele?.nextRound?.nextRound}</div>
+            ) : (
+              <div className="assign" onClick={() => handleClick()}>
+                Assign
+              </div>
+            )}
+            <div>
+              <img src={"./right-arrow-full.svg"} alt="" />
+            </div>
+          </div>
+        ))}
+      </div>
+      {showPopUp && <HrSubmission setShowPopUp={setShowPopUp} />}
+    </>
   );
 };

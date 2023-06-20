@@ -5,7 +5,8 @@
         "nextRound": {
             "alloted": true,
             "nextRound": "2 Days Round"
-        }
+        },
+        "candidateId": "12345"
     },
     {
         "name": "Sharath Gowda G",
@@ -13,14 +14,16 @@
         "nextRound": {
             "alloted": true,
             "nextRound": "2 Days Round"
-        }
+        },
+        "candidateId": "12345"
     },
     {
         "name": "Sharath Gowda G",
         "dateOfInterview": "24/03/2023",
         "nextRound": {
             "alloted": false
-        }
+        },
+        "candidateId": "12345"
     },
     {
         "name": "Sharath Gowda G",
@@ -28,7 +31,8 @@
         "nextRound": {
             "alloted": true,
             "nextRound": "2 Days Round"
-        }
+        },
+        "candidateId": "12345"
     },
     {
         "name": "Sharath Gowda G",
@@ -36,14 +40,16 @@
         "nextRound": {
             "alloted": true,
             "nextRound": "2 Days Round"
-        }
+        },
+        "candidateId": "12345"
     },
     {
         "name": "Sharath Gowda G",
         "dateOfInterview": "24/03/2023",
         "nextRound": {
             "alloted": false
-        }
+        },
+        "candidateId": "12345"
     },
     {
         "name": "Sharath Gowda G",
@@ -51,6 +57,7 @@
         "nextRound": {
             "alloted": true,
             "nextRound": "2 Days Round"
-        }
+        },
+        "candidateId": "12345"
     }
 ]
