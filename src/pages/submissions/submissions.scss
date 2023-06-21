@@ -89,6 +89,9 @@
           color: #ff0000;
           cursor: pointer;
         }
+        .next-round > img {
+          cursor: pointer;
+        }
       }
       & > div:nth-child(1) {
         & > div {

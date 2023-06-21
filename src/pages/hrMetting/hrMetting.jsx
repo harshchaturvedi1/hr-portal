@@ -60,7 +60,7 @@ const starDesc = [
   "** If score is above 2 in any of these competencies, the candidature will be rejected  ",
   "*** If total score is above 2.5 in any of these competencies, the candidature will be rejected",
 ];
-const MAX_RATING = 5;
+const MAX_RATING = 4;
 
 // all constants-------------------------------------------
 
@@ -281,9 +281,9 @@ const ZoomScreen = ({ comments, setComments, handleSubmit }) => {
       </div>
       <div>
         <div className={styles.comment}>
-          <input
+          <textarea
             type="text"
-            placeholder="Add your comments"
+            placeholder="Overall comment ..."
             value={comments}
             onChange={(e) => setComments(e.target.value)}
           />

@@ -256,7 +256,7 @@ const Ratings = ({
                     </div>
                   ))}
                 <div className={styles.eachItemInput}>
-                  <input
+                  <textarea
                     type="text"
                     placeholder="Add your comments"
                     value={inputForR4[index]}
@@ -313,7 +313,7 @@ const Ratings = ({
             </div>
             {selectedItem5 === index && (
               <div className={styles.eachItemInput}>
-                <input
+                <textarea
                   type="text"
                   placeholder="Add your comments"
                   value={inputForR5[index]}
@@ -402,7 +402,7 @@ const ZoomScreen = ({ comments, setComments, handleSubmit }) => {
       </div>
       <div>
         <div className={styles.comment}>
-          <input
+          <textarea
             type="text"
             placeholder="Add your comments"
             value={comments}
