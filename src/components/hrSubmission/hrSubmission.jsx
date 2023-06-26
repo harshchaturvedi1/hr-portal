@@ -18,7 +18,7 @@ export const HrSubmission = ({
     { value: "48hrs", label: "48hrs Round" },
   ]);
   const [r1andr2Result, setR1AndR2Result] = useState({});
-  const [r3Data, setR3Data] = useState([]);
+  const [r3Data, setR3Data] = useState();
   const handleOptionChange = (val) => {
     setProject(val.value);
     setIsdisabled(false);
@@ -28,6 +28,7 @@ export const HrSubmission = ({
     try {
       const port = 8105;
       const candidateId = candidate?.candidateId;
+      // const candidateId = "mvananthu@gmail.com";
       const res = await getCandidateDetails(candidateId, port);
       console.log("r1Andr2Score===>", res);
       setR1AndR2Result({ ...res });
@@ -40,8 +41,10 @@ export const HrSubmission = ({
     try {
       const port = 8105;
       const candidateId = candidate?.candidateId;
+      // const candidateId = "mvananthu@gmail.com";
       const res = await r3Result(candidateId, port);
       console.log("r3Ratings====>", res);
+      setR3Data({ ...res });
     } catch (err) {
       console.log("r3Ratings==>", err);
     }
@@ -50,6 +53,7 @@ export const HrSubmission = ({
   const handleResultSubmit = async () => {
     try {
       const c_id = candidate?.candidateId;
+      // const c_id = "mvananthu@gmail.com";
       const port = 8105;
       const res = await submitHrResult(project, c_id, port);
       console.log("handleResultSubmit===>", res);
@@ -116,9 +120,26 @@ export const HrSubmission = ({
               </div>
             </div>
             <div className="round-3"> Round 3 :</div>
+            <RoundThree data={r3Data?.candidateRound3Scores} />
           </div>
+          <div className="comments">{r3Data?.overallComment}</div>
         </div>
       </div>
     </div>
+  );
+};
+
+const RoundThree = ({ data }) => {
+  return (
+    <>
+      {data?.map((ele, index) => (
+        <div className="r3-each">
+          <div>{ele?.sectionName}</div>
+          <div>
+            {ele?.score} <span> ★</span>
+          </div>
+        </div>
+      ))}
+    </>
   );
 };
