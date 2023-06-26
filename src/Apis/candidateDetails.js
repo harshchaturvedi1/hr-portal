@@ -33,6 +33,22 @@ export const getCandidateDetails = async (candidateId, port = PORT) => {
   return await axios.post(URL, data, Config).then((res) => res.data);
 };
 
+export const r3Result = async (candidateId, port = PORT) => {
+  const endPoint = `/get/section/ratings`;
+  const URL = process.env.REACT_APP_BASE_URL + ":" + port + endPoint;
+  let Config = {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    },
+  };
+  const data = {
+    // id: "mvananthu@gmail.com",
+    id: candidateId,
+  };
+
+  return await axios.post(URL, data, Config).then((res) => res.data);
+};
+
 export const getCandidateResume = async (candidateId, port = 9000) => {
   // hard coding for testing // need to remove later
   const endPoint = `/downloadblob`;

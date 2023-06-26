@@ -39,8 +39,8 @@ export const getPreviousSubmissions = async (hrId, port = PORT) => {
     date: currentData(),
   };
   //   console.log("getPreviousSubmissions==>", data);
-  return await axios.post(URL, data, Config).then((res) => res.data);
-  //   return dummyRes;
+  // return await axios.post(URL, data, Config).then((res) => res.data);
+  return dummyRes;
 };
 
 function currentData() {

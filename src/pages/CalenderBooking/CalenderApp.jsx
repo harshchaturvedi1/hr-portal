@@ -9,7 +9,10 @@ import { getAllEvents } from "../../Apis/calendarEvents";
 import { allEvents } from "../../commonFunctions/allEvents";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { currentMonthEvents } from "../../Apis/monthEventDetails";
+import {
+  currentMonthEvents,
+  getPendingProjects,
+} from "../../Apis/monthEventDetails";
 
 // const pres
 
@@ -80,11 +83,23 @@ const CalenderApp = () => {
     setDateRange({ ...newRange });
   };
 
+  const pendingProject = async () => {
+    try {
+      const port = 8105;
+      const res = await getPendingProjects(port);
+      console.log("pendingProject==>", res);
+      return res;
+    } catch (err) {
+      console.log("pendingProject==>", err);
+    }
+  };
+
   const monthEvents = async () => {
     try {
       const port = 8105;
       const res = await currentMonthEvents(port);
-      setCurrentMonthDetails({ ...res });
+      const res2 = await pendingProject();
+      setCurrentMonthDetails({ ...res, pending: res2 });
     } catch (err) {
       console.log("monthEvents ===>", err);
     }
@@ -112,7 +127,7 @@ const CalenderApp = () => {
 
     // Get the month number
     const monthNumber = today.getMonth();
-
+    console.log("handleCurrentMonth===>", monthNumber);
     // Get the month name as a string
     const presentMonth = monthNames[monthNumber];
     setCurrentMonth(presentMonth);
@@ -130,11 +145,14 @@ const CalenderApp = () => {
 
   useEffect(() => {
     document.body.style.overflow = "scroll";
-    handleGetAllEvents();
-    monthEvents();
     handleCurrentMonth();
+    handleGetAllEvents();
     handleTitles();
   }, [dateRange]);
+
+  useEffect(() => {
+    monthEvents();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -155,6 +173,11 @@ const CalenderApp = () => {
         <MeetDetails
           data={currentMonthDetails?.meetingsCompleted}
           heading={titles[2]}
+          color="#FFDABF"
+        />
+        <MeetDetails
+          data={currentMonthDetails?.pending}
+          heading={titles[3]}
           color="#FFDABF"
         />
       </div>

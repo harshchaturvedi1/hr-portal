@@ -38,17 +38,25 @@ export const Submissions = () => {
             </div>
           </div>
         </div>
-        <CandidateData data={candidateData} />
+        <CandidateData
+          data={candidateData}
+          handleGetSubmissions={handleGetSubmissions}
+          setCandidateData={setCandidateData}
+        />
       </div>
     </div>
   );
 };
 
-const CandidateData = ({ data }) => {
+const CandidateData = ({ data, handleGetSubmissions, setCandidateData }) => {
   const [showPopUp, setShowPopUp] = useState(false);
+  const [selectedId, setSelectedId] = useState({});
 
   const handleClick = (ele) => {
-    if (!ele?.nextRound?.[0]?.alloted) setShowPopUp(true);
+    if (!ele?.nextRound?.[0]?.alloted) {
+      setSelectedId(ele);
+      setShowPopUp(true);
+    }
   };
 
   return (
@@ -82,7 +90,14 @@ const CandidateData = ({ data }) => {
           </div>
         ))}
       </div>
-      {showPopUp && <HrSubmission setShowPopUp={setShowPopUp} />}
+      {showPopUp && (
+        <HrSubmission
+          setShowPopUp={setShowPopUp}
+          candidate={selectedId}
+          handleGetSubmissions={handleGetSubmissions}
+          setCandidateData={setCandidateData}
+        />
+      )}
     </>
   );
 };

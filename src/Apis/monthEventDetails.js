@@ -34,3 +34,31 @@ const currentMonthData = () => {
   };
   return data;
 };
+
+export const getPendingProjects = async (port = PORT) => {
+  let Config = {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    },
+  };
+
+  const endPoint = `/count/pending/project`;
+  const URL = process.env.REACT_APP_BASE_URL + ":" + port + endPoint;
+
+  var today = new Date();
+
+  // Extract the month number from the date
+  var month = String(today.getMonth() + 1).padStart(2, "0");
+
+  // Format the date as "YYYY-MM-DD"
+
+  var formattedDate =
+    +today.getDate() + "-" + month + "-" + today.getFullYear();
+
+  const data = {
+    date: formattedDate,
+    hrId: "dev.wissda@gmail.com",
+  };
+
+  return await axios.post(URL, data, Config).then((res) => res.data);
+};
