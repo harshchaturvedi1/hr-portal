@@ -13,6 +13,7 @@ import {
   currentMonthEvents,
   getPendingProjects,
 } from "../../Apis/monthEventDetails";
+import { Header } from "../../components/header/header";
 
 // const pres
 
@@ -155,54 +156,57 @@ const CalenderApp = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.heading}>Welcome! {userName} </div>
-      <div className={styles.subheader}>
-        Lets take a moment to check Interview Plannned
-      </div>
-      <div className={styles.allMeet}>
-        <MeetDetails
-          data={currentMonthDetails?.meetingsOnDate}
-          heading={titles[0]}
+    <>
+      <Header />
+      <div className={styles.container}>
+        <div className={styles.heading}>Welcome! {userName} </div>
+        <div className={styles.subheader}>
+          Lets take a moment to check Interview Plannned
+        </div>
+        <div className={styles.allMeet}>
+          <MeetDetails
+            data={currentMonthDetails?.meetingsOnDate}
+            heading={titles[0]}
+          />
+          <MeetDetails
+            data={currentMonthDetails?.meetingsPending}
+            heading={titles[1]}
+            color="#FFDABF"
+          />
+          <MeetDetails
+            data={currentMonthDetails?.meetingsCompleted}
+            heading={titles[2]}
+            color="#FFDABF"
+          />
+          <MeetDetails
+            data={currentMonthDetails?.pending}
+            heading={titles[3]}
+            color="#FFDABF"
+          />
+        </div>
+        <FullCalendar
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          headerToolbar={{
+            left: "prev,next today",
+            center: "title",
+            // right: "dayGridMonth,timeGridWeek,timeGridDay",
+            right: "timeGridWeek,timeGridDay",
+          }}
+          initialView="timeGridDay"
+          events={events}
+          eventContent={renderEventContent}
+          eventClick={handleEventClick}
+          datesSet={handleDateSet}
         />
-        <MeetDetails
-          data={currentMonthDetails?.meetingsPending}
-          heading={titles[1]}
-          color="#FFDABF"
-        />
-        <MeetDetails
-          data={currentMonthDetails?.meetingsCompleted}
-          heading={titles[2]}
-          color="#FFDABF"
-        />
-        <MeetDetails
-          data={currentMonthDetails?.pending}
-          heading={titles[3]}
-          color="#FFDABF"
-        />
-      </div>
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        headerToolbar={{
-          left: "prev,next today",
-          center: "title",
-          // right: "dayGridMonth,timeGridWeek,timeGridDay",
-          right: "timeGridWeek,timeGridDay",
-        }}
-        initialView="timeGridDay"
-        events={events}
-        eventContent={renderEventContent}
-        eventClick={handleEventClick}
-        datesSet={handleDateSet}
-      />
 
-      {popupOpen && (
-        <EventDetails
-          handleClosePopup={handleClosePopup}
-          selectedEvent={selectedEvent}
-        />
-      )}
-    </div>
+        {popupOpen && (
+          <EventDetails
+            handleClosePopup={handleClosePopup}
+            selectedEvent={selectedEvent}
+          />
+        )}
+      </div>
+    </>
   );
 };
 
