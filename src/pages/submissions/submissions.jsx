@@ -5,6 +5,8 @@ import { HrSubmission } from "../../components/hrSubmission/hrSubmission";
 import { getPreviousSubmissions } from "../../Apis/getPreviousSubmissions";
 export const Submissions = () => {
   const [candidateData, setCandidateData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [name, setName] = useState("");
 
   const handleGetSubmissions = async () => {
     try {
@@ -12,9 +14,31 @@ export const Submissions = () => {
       const port = 8105;
       const res = await getPreviousSubmissions(hrId, port);
       setCandidateData([...res]);
+      setFilteredData([...res]);
       console.log("handleGetSubmissions===>", res);
     } catch (err) {
       console.log("handleGetSubmissions==>", err);
+    }
+  };
+
+  const handleSearch = (event) => {
+    const query = event.target.value.trim().toLowerCase();
+
+    const filteredItems = candidateData.filter((item) =>
+      item.candidateName.toLowerCase().includes(query)
+    );
+    setFilteredData([...filteredItems]);
+  };
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+    if (e.target.value.length === 0) {
+      setFilteredData([...candidateData]);
+    }
+    if (e.target.value.length < 2) {
+      return;
+    } else {
+      handleSearch(e);
     }
   };
 
@@ -31,7 +55,12 @@ export const Submissions = () => {
           </div>
           <div className="search">
             <div className="search-input">
-              <input type="text" placeholder="Search by Candidate Name" />
+              <input
+                type="text"
+                placeholder="Search by Candidate Name"
+                value={name}
+                onChange={(e) => handleChange(e)}
+              />
             </div>
             <div className="icon">
               <img src={"./search-icon.svg"} alt="search" />
@@ -39,7 +68,7 @@ export const Submissions = () => {
           </div>
         </div>
         <CandidateData
-          data={candidateData}
+          data={filteredData}
           handleGetSubmissions={handleGetSubmissions}
           setCandidateData={setCandidateData}
         />
