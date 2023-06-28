@@ -35,11 +35,11 @@ export const Submissions = () => {
     if (e.target.value.length === 0) {
       setFilteredData([...candidateData]);
     }
-    if (e.target.value.length < 2) {
-      return;
-    } else {
-      handleSearch(e);
-    }
+    // if (e.target.value.length < 2) {
+    // return;
+    // } else {
+    handleSearch(e);
+    // }
   };
 
   useEffect(() => {

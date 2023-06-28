@@ -7,51 +7,9 @@ import { submitCandidateResult } from "../../Apis/submitResult";
 import Select from "react-select";
 import { submitHrResult } from "../../Apis/submitHrResult";
 import { submitRound } from "../../Apis/roundSubmission";
+import { hrQuestions } from "../../mockData/hrQuestions";
 // all constants------------------------------------------
-const items = [
-  {
-    title: "Technical Ability",
-    description: [
-      {
-        desc: "Inquire about the automated /coding tests results and ask questions from the test        ",
-      },
-      {
-        desc: " Ask 5 fundamental questions that will be randomly pulled from the technical question banks based on the level of the candidates",
-      },
-      {
-        desc: "Probe more with following questions:",
-        subdesc: [
-          " Explain in detail your last project worked on and the specific role played? ",
-          " Technology stack worked on the project",
-        ],
-      },
-    ],
-  },
-  {
-    title: "Customer Focus",
-    description: [],
-  },
-  {
-    title: "Result Orientation",
-    description: [],
-  },
-  {
-    title: "Self Motivation",
-    description: [],
-  },
-  {
-    title: "Ability to work independently",
-    description: [],
-  },
-  {
-    title: "Result Orientation",
-    description: [],
-  },
-  {
-    title: "Result Orientation",
-    description: [],
-  },
-];
+
 const starDesc = [
   "Overcome Obstacles & Stretches",
   "Consistency in Performance",
@@ -66,7 +24,7 @@ const MAX_RATING = 4;
 
 const HrMetting = () => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const [ratings, setRatings] = useState(Array(items.length).fill(0));
+  const [ratings, setRatings] = useState(Array(hrQuestions.length).fill(0));
   const [totalRatings, setTotalRatings] = useState(0);
   const [comments, setComments] = useState("");
   const navigate = useNavigate();
@@ -101,7 +59,12 @@ const HrMetting = () => {
     try {
       console.log("submitted", ratings);
       const id = sessionStorage.getItem("candidateId");
-      const res = await submitCandidateResult(items, ratings, comments, id);
+      const res = await submitCandidateResult(
+        hrQuestions,
+        ratings,
+        comments,
+        id
+      );
       console.log("handleSubmit r3 final ====>", res);
       const res2 = await submitRound("round3", id, 8100);
       navigate("/roundFinal");
@@ -114,7 +77,7 @@ const HrMetting = () => {
     return (
       <>
         <div className={styles.itemList}>
-          {items.map((item, index) => (
+          {hrQuestions.map((item, index) => (
             <div key={index} className={styles.eachItem}>
               <div
                 className={`${styles.itemTitle} ${
