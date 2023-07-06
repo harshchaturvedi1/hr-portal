@@ -92,7 +92,7 @@ export const CandidateDetails = ({ handleClosePopup, selectedEvent }) => {
 
   const handleCandidateDetails = async (candidateId) => {
     try {
-      const port = 8105;
+      const port = 8108;
       const res = await getCandidateDetails(candidateId, port);
       setCandidateProfile({ ...res });
       console.log(" handleCandidateDetails ==>", res);
